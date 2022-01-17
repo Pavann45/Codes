@@ -1,0 +1,23 @@
+public class HelloWorld{
+    public static int max=0;
+    public static void knapsack(int[] v,int[] w,int tw,int cw,int mv,int idx){
+        //if(cw>tw)return;
+        if(tw<=cw){
+            max=Math.max(max,mv);
+        }
+        for(int i=idx;i<v.length;i++){
+            if(cw+w[i]<=tw)
+            knapsack(v,w,tw,cw+w[i],mv+v[i],idx+1);
+        }
+    }
+
+     public static void main(String []args){
+        //System.out.println("Hello World");
+        int[] value={3,4,5,6};
+        int[] weight={2,3,4,5};
+        int W=5;
+        knapsack(value,weight,W,0,0,0);
+        System.out.println(max);
+        
+     }
+}
